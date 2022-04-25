@@ -8,6 +8,7 @@
 #include <QtGui>
 #include <string>
 #include <fstream>
+#include <QFileDialog>
 
 using namespace std;
 
@@ -23,11 +24,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    QToolBar* createToolBar();
-    QToolBar* createToolBar2();
-
 private slots:
-    void slotNoImpl();
+    void newWindow();
+
     void on_save_triggered();
 
     void on_exit_triggered();

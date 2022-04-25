@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[6];
-    char stringdata0[77];
+    char stringdata0[76];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -30,14 +30,14 @@ struct qt_meta_stringdata_MainWindow_t {
 static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
 QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
-QT_MOC_LITERAL(1, 11, 10), // "slotNoImpl"
-QT_MOC_LITERAL(2, 22, 0), // ""
-QT_MOC_LITERAL(3, 23, 17), // "on_save_triggered"
-QT_MOC_LITERAL(4, 41, 17), // "on_exit_triggered"
-QT_MOC_LITERAL(5, 59, 17) // "on_open_triggered"
+QT_MOC_LITERAL(1, 11, 9), // "newWindow"
+QT_MOC_LITERAL(2, 21, 0), // ""
+QT_MOC_LITERAL(3, 22, 17), // "on_save_triggered"
+QT_MOC_LITERAL(4, 40, 17), // "on_exit_triggered"
+QT_MOC_LITERAL(5, 58, 17) // "on_open_triggered"
 
     },
-    "MainWindow\0slotNoImpl\0\0on_save_triggered\0"
+    "MainWindow\0newWindow\0\0on_save_triggered\0"
     "on_exit_triggered\0on_open_triggered"
 };
 #undef QT_MOC_LITERAL
@@ -76,7 +76,6 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         MainWindow *_t = static_cast<MainWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->slotNoImpl(); break;
         case 1: _t->on_save_triggered(); break;
         case 2: _t->on_exit_triggered(); break;
         case 3: _t->on_open_triggered(); break;
