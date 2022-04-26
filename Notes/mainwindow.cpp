@@ -16,28 +16,28 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_save_triggered()
 {
+   QString filePath = QFileDialog::getSaveFileName(this, tr("Open file"), "", tr("Text files (*.txt)"));
 
-    QString filePath = QFileDialog::getSaveFileName(this, tr("Open file"), "", tr("Text files (*.txt)"), 0);
-
-    QFileInfo fileinfo(filePath);
-    QString fileName = fileinfo.fileName();
-
-    if (!filePath.isNull())
+    if (filePath != "")
     {
-        char * FILE_NAME;
-        strcpy(FILE_NAME, filePath.toStdString().c_str());
+        QFile file(filePath);
+        if (!file.open(QIODevice::WriteOnly))
+        {
+            QMessageBox::critical(this,tr("Error"),tr("Could not save file"));
+            return;
+        }
+        else
+        {
+            QTextStream stream(&file);
+            stream << ui->text_field->toPlainText();
+            stream.flush();
+            file.close();
+        }
 
-        ofstream out;
-        out.open(FILE_NAME);
-
-        string text_field = ui->text_field->toPlainText().toStdString();
+        QFileInfo fileinfo(filePath);
+        QString fileName = fileinfo.fileName();
 
         ui->tabWidget->setTabText(0, fileName);
-
-        if (out.is_open())
-        {
-            out << text_field;
-        }
     }
 
 }
@@ -51,34 +51,24 @@ void MainWindow::on_open_triggered()
 {
     QString filePath = QFileDialog::getOpenFileName(this, tr("Open file"), "", tr("Text files (*.txt)"));
 
-    QFileInfo fileinfo(filePath);
-    QString fileName = fileinfo.fileName();
-
-    if (!filePath.isNull())
+    if (filePath != "")
     {
-        char * FILE_NAME;
-
-        string textFile = "";
-
-        strcpy(FILE_NAME, filePath.toStdString().c_str());
-
-        string line;
-
-        ifstream in(FILE_NAME);
-        if (in.is_open())
+        QFile file(filePath);
+        if (!file.open(QIODevice::ReadOnly))
         {
-            while (getline(in, line))
-            {
-                textFile += line;
-            }
+            QMessageBox::critical(this,tr("Error"),tr("Could not open file"));
+            return;
         }
 
-        in.close();
+        QTextStream in(&file);
+        ui->text_field->setText(in.readAll());
+        file.close();
+
+        QFileInfo fileinfo(filePath);
+        QString fileName = fileinfo.fileName();
 
         ui->tabWidget->setTabText(0, fileName);
-
-        ui->text_field->setText(QString::fromStdString(textFile));
-
     }
+
 
 }

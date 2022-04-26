@@ -3,12 +3,9 @@
 
 #include <QMainWindow>
 #include <QTextStream>
-#include <QDebug>
-#include <QTextCodec>
-#include <QtGui>
-#include <string>
-#include <fstream>
 #include <QFileDialog>
+#include <QMessageBox>
+#include <string>
 
 using namespace std;
 
@@ -25,7 +22,6 @@ public:
     ~MainWindow();
 
 private slots:
-    void newWindow();
 
     void on_save_triggered();
 
