@@ -21,7 +21,7 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -79,8 +79,9 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>Файл</string>
     </property>
-    <addaction name="save"/>
     <addaction name="open"/>
+    <addaction name="save"/>
+    <addaction name="saveAs"/>
     <addaction name="separator"/>
     <addaction name="exit"/>
    </widget>
@@ -95,19 +96,30 @@ p, li { white-space: pre-wrap; }
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="save">
+  <action name="saveAs">
    <property name="text">
-    <string>Сохранить</string>
+    <string>Сохранить как</string>
    </property>
   </action>
   <action name="open">
    <property name="text">
-    <string>Открыть</string>
+    <string>Открыть (Ctrl+O)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
    </property>
   </action>
   <action name="exit">
    <property name="text">
     <string>Выход</string>
+   </property>
+  </action>
+  <action name="save">
+   <property name="text">
+    <string>Сохранить (Ctrl+S)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
    </property>
   </action>
  </widget>

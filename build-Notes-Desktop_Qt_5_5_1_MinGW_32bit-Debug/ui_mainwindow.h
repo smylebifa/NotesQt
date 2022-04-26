@@ -31,9 +31,10 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
-    QAction *save;
+    QAction *saveAs;
     QAction *open;
     QAction *exit;
+    QAction *save;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
     QTabWidget *tabWidget;
@@ -52,12 +53,14 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(469, 368);
-        save = new QAction(MainWindow);
-        save->setObjectName(QStringLiteral("save"));
+        saveAs = new QAction(MainWindow);
+        saveAs->setObjectName(QStringLiteral("saveAs"));
         open = new QAction(MainWindow);
         open->setObjectName(QStringLiteral("open"));
         exit = new QAction(MainWindow);
         exit->setObjectName(QStringLiteral("exit"));
+        save = new QAction(MainWindow);
+        save->setObjectName(QStringLiteral("save"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayout = new QVBoxLayout(centralWidget);
@@ -108,14 +111,15 @@ public:
         MainWindow->setStatusBar(statusBar);
 
         menuBar->addAction(menu->menuAction());
-        menu->addAction(save);
         menu->addAction(open);
+        menu->addAction(save);
+        menu->addAction(saveAs);
         menu->addSeparator();
         menu->addAction(exit);
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -124,9 +128,12 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
-        save->setText(QApplication::translate("MainWindow", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214", 0));
-        open->setText(QApplication::translate("MainWindow", "\320\236\321\202\320\272\321\200\321\213\321\202\321\214", 0));
+        saveAs->setText(QApplication::translate("MainWindow", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214 \320\272\320\260\320\272", 0));
+        open->setText(QApplication::translate("MainWindow", "\320\236\321\202\320\272\321\200\321\213\321\202\321\214 (Ctrl+O)", 0));
+        open->setShortcut(QApplication::translate("MainWindow", "Ctrl+O", 0));
         exit->setText(QApplication::translate("MainWindow", "\320\222\321\213\321\205\320\276\320\264", 0));
+        save->setText(QApplication::translate("MainWindow", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214 (Ctrl+S)", 0));
+        save->setShortcut(QApplication::translate("MainWindow", "Ctrl+S", 0));
         text_field->setHtml(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
